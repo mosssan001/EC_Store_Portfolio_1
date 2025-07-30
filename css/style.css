@@ -1,0 +1,769 @@
+* {
+  box-sizing: border-box;
+}
+
+
+ html, body {
+  overflow-x: hidden;
+}   /* Google Fonts: Noto Serif JP + Open Sans */
+body {
+  margin: 0;
+  font-family: 'Noto Serif JP', serif;
+  color: #333;
+  background-color: #f9f7f5;
+  line-height: 1.8;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+h1, h2, h3 {
+  font-family: 'Noto Serif JP', serif;
+  color: #2e2e2e;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  h1, h2 {
+    font-size: 1.5rem;
+  }
+}
+
+
+/* Header */
+.glass-header {
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* ← 左右に分ける！ */
+  align-items: center;
+  padding: 25px 60px;
+  background: transparent;
+  z-index: 1000;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+
+.glass-header.scrolled {
+  background: rgba(0, 0, 0, 0.1); /* ほんのり黒 */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* Safari対策 */
+}
+
+.cart-icon {
+  width: 32px;
+  height: 32px;
+}
+
+
+nav ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: opacity 0.3s;
+}
+
+nav ul li a:hover {
+  opacity: 0.7;
+}
+
+
+/* カート */
+
+.cart-icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  z-index: 1000;
+}
+.cart-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: white;
+}
+
+.cart-icon:hover {
+  opacity: 0.7;
+}
+
+
+    /* ===== ハンバーガー（2本線） ===== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 18px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    /* ===== モバイルメニュー（右からスライド） ===== */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.95);
+      padding: 100px 30px 60px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 30px;
+      transition: right 0.3s ease;
+      z-index: 1000;
+    }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
+    .mobile-menu a {
+      color: white;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+ 
+    /* × ボタン */
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 35px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* ===== レスポンシブ ===== */
+    @media screen and (max-width: 768px) {
+    nav ul {
+      display: none;
+    }
+    .hamburger {
+      display: flex;
+      margin-left: auto;
+
+    }
+
+    .glass-header {
+    justify-content: space-between;
+    padding: 25px 40px;
+    }
+
+    .cart-icon {
+    margin-right: auto;
+        display: none; /* スマホでは非表示に */
+    }
+
+    .hero-text {
+      right: 40px;
+    }
+}
+.mobile-cart-link {
+  display: none; /* PCでは非表示 */
+}
+
+
+  .mobile-cart-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+
+  .mobile-cart-link svg {
+    width: 20px;
+    height: 20px;
+    stroke: white;
+  }
+
+  .mobile-cart-link:hover {
+    opacity: 0.7;
+  }
+
+
+
+/* Hero Section */
+
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: right;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  text-align: right
+}
+.hero-text {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  text-align: right;
+  color: #fff;
+  max-width: 500px;
+  z-index: 2;
+}
+
+.hero-text h1 {
+  font-size: 4rem;
+  letter-spacing: 0.1em;
+  margin: 0;
+  color: #fff;
+  z-index: 2;
+
+}
+
+.hero-text p {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  color: #fff;
+    z-index: 2;
+
+}
+/* 背景スライド用レイヤー */
+/* 共通スタイル */
+/* Hero Section */
+
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: right;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  text-align: right
+}
+.hero-text {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  text-align: right;
+  color: #fff;
+  max-width: 500px;
+  z-index: 2;
+}
+
+.hero-text h1 {
+  font-size: 4rem;
+  letter-spacing: 0.1em;
+  margin: 0;
+  color: #fff;
+  z-index: 2;
+
+}
+
+.hero-text p {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  color: #fff;
+    z-index: 2;
+
+}
+/* 背景スライド用レイヤー */
+.hero::before,
+.hero::after,
+.hero-bg-1,
+.hero-bg-2 {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: fadeSlide 16s infinite;
+  opacity: 0;
+  z-index: 0;
+}
+
+.hero::before {
+  background-image: url('../images/neora-aylon-tEfI-Dz8yDI-unsplash.jpg');
+  animation-delay: 0s;
+}
+
+.hero::after {
+  background-image: url('../images/k-t-francis-ewn69fOCQqc-unsplash.jpg');
+  animation-delay: 4s;
+}
+
+.hero-bg-1 {
+  background-image: url('../images/ish-consul-PahGtl7gvIc-unsplash.jpg');
+  animation-delay: 8s;
+}
+
+.hero-bg-2 {
+  background-image: url('../images/jonathon-b-carreno-_7-fJMxG3lk-unsplash.jpg');
+  animation-delay: 12s;
+}
+
+@keyframes fadeSlide {
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }   /* フェードイン（1.6秒） */
+  35%  { opacity: 1; }   /* 完全表示キープ（4秒） */
+  45%  { opacity: 0; }   /* フェードアウト（1.6秒） */
+  100% { opacity: 0; }
+}
+/* テキストは上に出す */
+
+@media screen and (max-width: 480px) {
+  .hero-text {
+      top: 20%;
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+}
+
+/* テキストは上に出す */
+
+@media screen and (max-width: 480px) {
+  .hero-text {
+      top: 20%;
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+}
+/* About Section */
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.about p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1rem;
+  color: #4a4a4a;
+}
+
+
+
+/* コンセプトセクション（パララックス） */
+.concept-section {
+  position: relative;
+  background-image: url('../images/polina-kuzovkova-mq8FusIZ-ac-unsplash.jpg'); /* ← 画像パス差し替え */
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* 背景に暗さ追加 */
+.concept-overlay {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 1); /* 初期状態 */
+  z-index: 0;
+  pointer-events: none; /* ←クリックできなくなるのを防ぐためおすすめ */
+  transition: background-color 0.1s ease-out;
+}
+
+/* テキストボックス全体 */
+.concept-container {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* 見出し */
+.concept-heading {
+  font-size: 2rem;
+  font-weight: normal;
+  margin-bottom: 6rem;
+  line-height: 1.5;
+  color: #fff;
+}
+
+/* 本文 */
+.concept-body {
+  font-size: 1.1rem;
+  line-height: 2;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+/* モバイル対応 */
+@media screen and (max-width: 768px) {
+  .concept-section {
+    padding: 60px 16px;
+
+  }
+
+  .concept-heading {
+    font-size: 1.6rem;
+    margin-bottom: 3rem;
+
+  }
+
+  .concept-body {
+    font-size: 0.9rem;
+  }
+}
+
+
+
+/* Products Section */
+.featured {
+  padding: 60px 40px;
+  background-color: #f9f7f5;
+}
+
+.featured-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.featured-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2e2e2e;
+}
+
+.view-all {
+  font-size: 14px;
+  color: #111;
+  text-decoration: none;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 16px;
+    aspect-ratio: 1 / 1; /* 正方形にする */
+
+}
+
+.product-title {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 4px;
+  color: #222;
+}
+
+.product-price {
+  font-size: 13px;
+  color: #666;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr); /* スマホは2列に */
+    gap: 20px;
+  }
+
+  .product-title {
+    font-size: 13px;
+    line-height: 1.4;
+    word-break: break-word;
+  }
+
+  .product-price {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr; /* 極小幅は1列に */
+  }
+}
+
+/* カスタムsection */
+    .custom-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0px 40px 80px 40px;
+      gap: 60px;
+      border-bottom: 1px solid #eee;
+      flex-wrap: wrap;
+    }
+
+    .gift-title {
+      padding: 0 40px;
+    }
+
+    .custom-section__image-wrap {
+      flex: 1 1 50%;
+    }
+
+    .custom-section__image {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .custom-section__text-wrap {
+      flex: 1 1 50%;
+      max-width: 600px;
+    }
+
+    .custom-section__text-wrap h2 {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .custom-section__text-wrap p {
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .custom-section__button {
+      display: inline-block;
+      padding: 14px 24px;
+      border: 1px solid #000;
+      text-decoration: none;
+      font-size: 15px;
+      color: #000;
+      transition: background 0.3s;
+    }
+
+    .custom-section__button:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    @media screen and (max-width: 768px) {
+      .custom-section {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .custom-section__text-wrap {
+        max-width: 100%;
+      }
+    }
+/* Footer */
+.footer-simple-gray {
+  background-color: #ddd;
+  padding: 40px 20px;
+  font-size: 14px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between; /* ← 左右にしっかり散らす */
+  gap: 80px;                      /* ← カラム間の余白も広めに */
+  flex-wrap: wrap;
+  padding: 0 40px;                /* ← 全体に少し左右余白を追加 */
+}
+
+
+.footer-column {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin-bottom: 10px;
+}
+
+.footer-column a {
+  text-decoration: none;
+  color: #111;
+  transition: opacity 0.2s;
+}
+
+.footer-column a:hover {
+  opacity: 0.6;
+}
+
+/* ▼ スマホ表示（縦並び） */
+@media screen and (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 0 20px;
+  }
+}
+
+.new-post {
+  text-align: left;
+  padding: 60px 40px;
+  background-color: #f9f7f5;
+}
+
+.section-title {
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  margin-bottom: 60px;
+  font-weight:600;
+}
+
+
+.post-grid {
+  display: flex;
+  justify-content: center;
+  gap: 150px;
+  flex-wrap: wrap;
+}
+
+.post-card {
+  position: relative;
+  width: 450px;
+  height: 600px;
+  text-align: left;
+}
+
+.post-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.post-date {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: right;
+  font-size: 12px;
+  color: #666;
+  letter-spacing: 0.05em;
+}
+
+.post-title-box {
+  position: absolute;
+  bottom: -35px;
+  left: 13px;
+}
+
+.post-meta {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #888;
+  letter-spacing: 0.1em;
+  background-color: #f9f7f5;
+  width: 30%;
+  padding: 0 2px;
+}
+
+
+.post-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 8px;
+  line-height: 1.6;
+  width: 70%;
+  margin-top: 5px;
+  background-color: #f9f7f5;
+  padding: 5px;
+}
+
+@media screen and (max-width: 768px) {
+
+.post-grid {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  flex-wrap: wrap;
+}
+
+.post-card {
+  height: 430px;
+}
+
+
+.post-meta {
+  font-size: 10px;
+  width: 40%;
+}
+
+.post-title {
+  font-size: 12px;
+  width: 70%;
+}
+}
