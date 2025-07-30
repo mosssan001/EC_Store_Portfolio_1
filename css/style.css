@@ -558,8 +558,7 @@ nav ul li a:hover {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0px 40px 80px 40px;
-      gap: 60px;
+      gap: 40px;
       border-bottom: 1px solid #eee;
       flex-wrap: wrap;
     }
@@ -686,14 +685,14 @@ nav ul li a:hover {
 .post-grid {
   display: flex;
   justify-content: center;
-  gap: 150px;
+  gap: 80px;
   flex-wrap: wrap;
 }
 
 .post-card {
   position: relative;
-  width: 450px;
-  height: 600px;
+  width: 350px;
+  height: 450px;
   text-align: left;
 }
 
